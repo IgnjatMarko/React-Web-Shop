@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../redux/actions/productActions";
@@ -9,7 +9,7 @@ const ProductListing = () => {
     const products = useSelector((state) => state.allProducts.products);
     const dispatch = useDispatch();
     
-    const fetchProducts = async () => {
+    const fetchProducts = useCallback(async () => {
 
         const response = await axios
         .get("https://my-json-server.typicode.com/fonovac/api2/products")
@@ -17,10 +17,11 @@ const ProductListing = () => {
             console.log("Err", err);
         });
         dispatch(setProducts(response.data));
-        }
+        }, [dispatch]);
+
         useEffect(() => {
             fetchProducts();
-        }, [])
+        }, [fetchProducts])
     console.log("Products :", products);
     return (
         <div className="container">

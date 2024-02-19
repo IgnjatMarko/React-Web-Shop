@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +14,7 @@ const ProductDetails = () => {
 
   const { img, title, price, rating } = product;
   const dispatch = useDispatch();
-  const fetchProductDetail = async () => {
+  const fetchProductDetail = useCallback( async () => {
     const response = await axios
       .get(
         `https://my-json-server.typicode.com/fonovac/api2/products/${productId}`
@@ -23,32 +23,32 @@ const ProductDetails = () => {
         console.log("Err ", err);
       });
     dispatch(selectedProduct(response.data));
-  };
+  }, [dispatch, productId]);
 
   useEffect(() => {
     if (productId && productId !== "") fetchProductDetail(productId);
     return () => {
       dispatch(removeSelectedProduct());
     };
-  }, [productId]);
+  }, [dispatch, productId, fetchProductDetail]);
   return (
     <div className="container">
       <div className="card mb-3 border-secondary mx-auto p-2 mt-3 rounded-5" style={{ maxWidth: "710px" }}>
         {Object.keys(product).length === 0 ? (
           <div className="text-center">... Loading</div>
         ) : (
-          <div class="row g-0">
-            <div class="col-md-4">
+          <div className="row g-0">
+            <div className="col-md-4">
               <img src={img} class="img-fluid rounded-start" alt={title} />
             </div>
-            <div class="col-md-8">
-              <div class="card-body text-primary">
-                <h5 class="card-title">{title}</h5>
-                <p class="card-text">
+            <div className="col-md-8">
+              <div className="card-body text-primary">
+                <h5 className="card-title">{title}</h5>
+                <p className="card-text">
                   {price} RSD
                 </p>
-                <p class="card-text">
-                  <small class="text-body-secondary">
+                <p className="card-text">
+                  <small className="text-body-secondary">
                   {rating}
                   </small>
                 </p>
