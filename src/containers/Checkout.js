@@ -19,7 +19,7 @@ const Checkout = () => {
         className="card mb-3 border-secondary mx-auto p-2 mt-3 rounded-5"
         style={{ maxWidth: "710px" }}
       >
-        {Object.values(cartItems).length === 0 ? (
+        {Object.keys(cartItems).length === 0 ? (
           <div className="text-center">... No items selected</div>
         ) : (
           <div className="row g-0" key={id}>

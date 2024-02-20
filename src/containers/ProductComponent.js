@@ -38,7 +38,7 @@ const ProductComponent = () => {
               Add to Cart
             </a>
             <Link to={`/product/${id}`}>
-            <a href="#" class="card-link ms-2">
+            <a href="#" className="card-link ms-2">
               Details
             </a>
             </Link>

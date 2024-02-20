@@ -22,7 +22,9 @@ const ProductListing = () => {
         useEffect(() => {
             fetchProducts();
         }, [fetchProducts])
+
     console.log("Products :", products);
+    
     return (
         <div className="container">
             <div className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 d-flex justify-content-around">

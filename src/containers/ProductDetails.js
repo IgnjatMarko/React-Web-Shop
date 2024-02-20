@@ -10,7 +10,7 @@ import {
 const ProductDetails = () => {
   const product = useSelector((state) => state.product);
   const { productId } = useParams();
-  console.log(productId);
+//  console.log(productId);
 
   const { img, title, price, rating } = product;
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const ProductDetails = () => {
         ) : (
           <div className="row g-0">
             <div className="col-md-4">
-              <img src={img} class="img-fluid rounded-start" alt={title} />
+              <img src={img} className="img-fluid rounded-start" alt={title} />
             </div>
             <div className="col-md-8">
               <div className="card-body text-primary">
