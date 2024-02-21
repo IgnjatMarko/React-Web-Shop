@@ -2,6 +2,7 @@ import React from "react";
 import { Provider, useSelector } from "react-redux";
 import store from "../redux/store";
 import { Link } from "react-router-dom";
+import Cart from "./Cart"
 
 const Header = () => {
   const cartItems = useSelector(state => state.cart.cart);
@@ -72,15 +73,7 @@ const Header = () => {
               </ul>
             </div>
             <Provider store={store}>
-              <Link to={"/checkout"}>
-              <button type="button" class="btn btn-primary position-relative">
-                Cart
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  {cartItems.length}
-                  <span className="visually-hidden">cart items</span>
-                </span>
-              </button>
-              </Link>
+              <Cart></Cart>
             </Provider>
           </div>
         </nav>
