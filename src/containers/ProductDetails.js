@@ -8,6 +8,8 @@ import {
 } from "../redux/actions/productActions";
 import { addtoCart } from "../redux/cartSlice";
 import { Button } from "react-bootstrap";
+import LoremIpsum from "react-lorem-ipsum";
+
 
 const ProductDetails = () => {
   const product = useSelector((state) => state.product);
@@ -55,6 +57,7 @@ const ProductDetails = () => {
               <div className="card-body text-primary">
                 <h5 className="card-title">{title}</h5>
                 <p className="card-text">{price} RSD</p>
+                <p className="card-text"><LoremIpsum p={1} /></p>
                 <p className="card-text">
                   <small className="text-body-secondary">{rating}</small>
                 </p>

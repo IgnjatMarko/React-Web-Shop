@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Cart from "./Cart"
 
 const Header = () => {
-  const cartItems = useSelector(state => state.cart.cart);
+  
   return (
     <div className="container">
       <nav className="navbar navbar-expand-lg bg-body-tertiary">

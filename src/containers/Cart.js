@@ -66,7 +66,7 @@ const Cart = () => {
           have chosen. Like, text, images, lists, etc.
         </Offcanvas.Body> */}
         {cartNum === 0 ? (
-          <Offcanvas.Header>Nema nista u korpi</Offcanvas.Header>
+          <Offcanvas.Header>Nothing in the cart.</Offcanvas.Header>
         ) : (
           <div className="container">
             {cart.map((item) => {
