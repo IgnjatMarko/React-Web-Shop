@@ -68,20 +68,34 @@ const Cart = () => {
         {cartNum === 0 ? (
           <Offcanvas.Header>Nothing in the cart.</Offcanvas.Header>
         ) : (
-          <div className="container">
+          <div className="d-flex flex-column mx-3">
             {cart.map((item) => {
               const { id, img, title, price, quantity } = item;
 
               return (
-                <ul className="list-group list-group-horizontal" key={id}>
-                  <li className="list-group-item">
-                    <img src={img} alt={title} style={{ width: "69px" }} />
+                <ul
+                  className="list-group list-group-horizontal w-auto"
+                  key={id}
+                >
+                  <li
+                    className="list-group-item d-flex justify-content-between align-items-center"
+                    style={{ minWidth: "90px" }}
+                  >
+                    <img src={img} alt={title} className="img-thumbnail" />
                   </li>
-                  <li className="list-group-item">{title}</li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center">
+                  <li
+                    className="list-group-item w-auto"
+                    style={{ minWidth: "110px" }}
+                  >
+                    {title}
+                  </li>
+                  <li
+                    className="list-group-item w-auto d-flex justify-content-between align-items-center"
+                    style={{ minWidth: "60px" }}
+                  >
                     {price} RSD
                   </li>
-                  <li className="list-group-item d-flex flex-column align-items-center">
+                  <li className="list-group-item w-auto d-flex flex-column align-items-center">
                     <button
                       type="button"
                       className="btn btn-success btn-sm"
@@ -98,10 +112,13 @@ const Cart = () => {
                       -
                     </button>
                   </li>
-                  <li className="list-group-item d-flex justify-content-between align-items-center">
+                  <li
+                    className="list-group-item d-flex w-auto justify-content-center align-items-center"
+                    style={{ minWidth: "50px" }}
+                  >
                     <button
                       type="button"
-                      className="btn btn-danger"
+                      className="btn btn-danger btn-sm"
                       onClick={() => handleDeleteItem(id)}
                     >
                       &times;

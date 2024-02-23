@@ -21,7 +21,7 @@ const ProductListing = () => {
     fetchProducts();
   }, [fetchProducts]);
 
-  console.log("Products :", products);
+//  console.log("Products :", products);
 
   return <ProductComponent />;
 };

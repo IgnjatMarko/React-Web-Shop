@@ -7,8 +7,25 @@ const ProductComponent = () => {
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
-  // const { id, img, title, price, rating } = props;
+  const [select, setSelect] = useState("");
+  const [range, setRange] = useState(10000);
+
   const renderList = products
+    .filter((product) => {
+      return select.toLowerCase() === ""
+        ? product
+        : product.title.toLowerCase().includes(select.toLowerCase());
+    })
+    .filter ((product) => {
+      return range === 10000
+        ? product
+        : product.price <= range;
+    })
+    .filter((product) => {
+      return search.toLowerCase() === ""
+        ? product
+        : product.title.toLowerCase().includes(search.toLowerCase());
+    })
     .filter((product) => {
       return search.toLowerCase() === ""
         ? product
@@ -55,7 +72,7 @@ const ProductComponent = () => {
     <div className="container">
       <nav className="navbar bg-body-tertiary bs-info-bg-subtle">
         <div
-          className="d-flex justify-content-between align-items-center"
+          className="d-flex justify-content-around align-items-center"
           style={{ width: "100%" }}
         >
           <button type="button" className="btn btn-primary ms-2" disabled>
@@ -65,24 +82,29 @@ const ProductComponent = () => {
             className="form-select d-flex align-items-end"
             aria-label="Small select example"
             style={{ width: "25%" }}
+            value={select}
+            onChange={(e) => setSelect(e.target.value)}
           >
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option value="">Select headphones brand</option>
+            <option value="boAt">boAt</option>
+            <option value="JBL">JBL</option>
           </select>
           <div className="">
             <label for="customRange2" className="form-label">
-              Example range
+              Price range
             </label>
             <input
               type="range"
               className="form-range"
-              min="0"
-              max="5"
+              min="1000"
+              max="10000"
+              step="250"
               id="customRange2"
+              value={range}
               style={{ width: "100%" }}
+              onChange={(e) => setRange(e.target.value)}
             />
+            <p>{range}</p>
           </div>
           <form className="d-flex me-2" role="search">
             <input
